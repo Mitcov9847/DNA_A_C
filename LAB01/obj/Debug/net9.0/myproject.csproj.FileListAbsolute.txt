@@ -1,0 +1,14 @@
+C:\Users\mihai\Desktop\DNA\LAB01\bin\Debug\net9.0\myproject.exe
+C:\Users\mihai\Desktop\DNA\LAB01\bin\Debug\net9.0\myproject.deps.json
+C:\Users\mihai\Desktop\DNA\LAB01\bin\Debug\net9.0\myproject.runtimeconfig.json
+C:\Users\mihai\Desktop\DNA\LAB01\bin\Debug\net9.0\myproject.dll
+C:\Users\mihai\Desktop\DNA\LAB01\bin\Debug\net9.0\myproject.pdb
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\myproject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\myproject.AssemblyInfoInputs.cache
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\myproject.AssemblyInfo.cs
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\myproject.csproj.CoreCompileInputs.cache
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\myproject.dll
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\refint\myproject.dll
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\myproject.pdb
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\myproject.genruntimeconfig.cache
+C:\Users\mihai\Desktop\DNA\LAB01\obj\Debug\net9.0\ref\myproject.dll
