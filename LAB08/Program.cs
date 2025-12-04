@@ -7,69 +7,80 @@ struct Book
 
 class Program
 {
-
-
+    // Функция для просмотра всех книг
     static void ViewAll(Book[] books)
     {
         Console.WriteLine("\nСписок книг библиотеки:");
 
-        for (int i = 0; i < books.Length; i++)
+        foreach (var book in books)
         {
-            string status;
-
-            if (books[i].IsBorrowed)
-                status = "взята";
-            else
-                status = "в наличии";
-
-            Console.WriteLine($"{i + 1}. {books[i].Title} {books[i].Year} {status}");
+            // Проверяем статус книги и выводим
+            string status = book.IsBorrowed ? "взята" : "в наличии";
+            Console.WriteLine($"{book.Title} ({book.Year}) - {status}");
         }
 
         Console.WriteLine();
     }
 
+    // Функция для взятия книги
     static void Borrow(Book[] books, string title)
     {
+        bool bookFound = false;
+
         for (int i = 0; i < books.Length; i++)
         {
-            if (books[i].Title == title)
+            // Ищем книгу по названию (без учета регистра)
+            if (books[i].Title.Equals(title, StringComparison.OrdinalIgnoreCase))
             {
-                if (books[i].IsBorrowed)
-                {
-                    Console.WriteLine("Эта книга уже была взята.\n");
-                    return;
-                }
-
-                books[i].IsBorrowed = true;
-                Console.WriteLine("Книга успешно взята.\n");
-                return;
-            }
-        }
-
-        Console.WriteLine("Ошибка: книги с таким названием нет.\n");
-    }
-
-    static void Return(Book[] books, string title)
-    {
-        for (int i = 0; i < books.Length; i++)
-        {
-            if (books[i].Title == title)
-            {
+                bookFound = true;
                 if (!books[i].IsBorrowed)
                 {
-                    Console.WriteLine("Эта книга уже находится в библиотеке.\n");
-                    return;
+                    // Меняем статус на "взята"
+                    books[i].IsBorrowed = true;
+                    Console.WriteLine($"Книга '{books[i].Title}' успешно взята.\n");
                 }
-
-                books[i].IsBorrowed = false;
-                Console.WriteLine("Книга успешно возвращена.\n");
-                return;
+                else
+                {
+                    Console.WriteLine($"Книга '{books[i].Title}' уже была взята.\n");
+                }
+                break;
             }
         }
 
-        Console.WriteLine("Ошибка: книги с таким названием нет.\n");
+        if (!bookFound)
+            Console.WriteLine("Ошибка: книги с таким названием нет.\n");
     }
 
+    // Функция для возвращения книги
+    static void Return(Book[] books, string title)
+    {
+        bool bookFound = false;
+
+        for (int i = 0; i < books.Length; i++)
+        {
+            // Ищем книгу по названию
+            if (books[i].Title.Equals(title, StringComparison.OrdinalIgnoreCase))
+            {
+                bookFound = true;
+                if (books[i].IsBorrowed)
+                {
+                    // Меняем статус на "в наличии"
+                    books[i].IsBorrowed = false;
+                    Console.WriteLine($"Книга '{books[i].Title}' успешно возвращена.\n");
+                }
+                else
+                {
+                    Console.WriteLine($"Книга '{books[i].Title}' уже находится в библиотеке.\n");
+                }
+                break;
+            }
+        }
+
+        if (!bookFound)
+            Console.WriteLine("Ошибка: книги с таким названием нет.\n");
+    }
+
+    // Главное меню программы
     static void Menu(Book[] books)
     {
         while (true)
@@ -87,24 +98,22 @@ class Program
             switch (choice)
             {
                 case "1":
-                    ViewAll(books);
+                    ViewAll(books); // Показать все книги
                     break;
 
                 case "2":
                     Console.Write("Введите название книги: ");
-                    string borrowName = Console.ReadLine();
-                    Borrow(books, borrowName);
+                    Borrow(books, Console.ReadLine()); // Взять книгу по названию
                     break;
 
                 case "3":
                     Console.Write("Введите название книги: ");
-                    string returnName = Console.ReadLine();
-                    Return(books, returnName);
+                    Return(books, Console.ReadLine()); // Вернуть книгу по названию
                     break;
 
                 case "0":
                     Console.WriteLine("Выход...");
-                    return;
+                    return; // Завершаем программу
 
                 default:
                     Console.WriteLine("Неизвестная команда.\n");
@@ -115,14 +124,16 @@ class Program
 
     static void Main()
     {
+        // Создаем массив из 5 книг библиотеки
         Book[] books = new Book[]
-{
-        new Book { Title = "Восстание Мстителей", Year = 2015, IsBorrowed = false },
-        new Book { Title = "Паук-версия",        Year = 2014, IsBorrowed = false },
-        new Book { Title = "Секретные войны",    Year = 2015, IsBorrowed = false },
-        new Book { Title = "Старик Логан",       Year = 2008, IsBorrowed = false },
-        new Book { Title = "Железный человек: Демон в бутылке", Year = 1979, IsBorrowed = false }
-};
-        Menu(books);
+        {
+            new Book { Title = "Восстание Мстителей", Year = 2015 },
+            new Book { Title = "Паук-версия",        Year = 2014 },
+            new Book { Title = "Секретные войны",    Year = 2015 },
+            new Book { Title = "Старик Логан",       Year = 2008 },
+            new Book { Title = "Железный человек: Демон в бутылке", Year = 1979 }
+        };
+
+        Menu(books); // Запускаем меню программы
     }
 }
