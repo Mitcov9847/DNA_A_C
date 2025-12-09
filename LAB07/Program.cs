@@ -25,46 +25,49 @@ class Program
 {
     static void Main()
     {
+        // Создаём два массива чисел одинаковой длины
         int[] a = { 1, 2, 3, 4 };
         int[] b = { 5, 6, 7, 8 };
 
-        // Проверка на равную длину
+        // Проверяем, что длины массивов совпадают
         if (a.Length != b.Length)
         {
             Console.WriteLine("Длины массивов должны совпадать");
-            return;
+            return; // Если длины разные, заканчиваем программу
         }
 
-        // Массив для записи результата
+        // Создаём массив для записи результатов сложения
         int[] result = new int[a.Length];
 
-        // Сложение с помощью while
+        // Вызываем функцию, которая сложит элементы массивов через while
         SumPairwiseWhile(a, b, result);
         Console.WriteLine("Результат (while): " + string.Join(" ", result));
 
-        // Сложение с помощью for
+        // Вызываем функцию, которая сложит элементы массивов через for
         SumPairwiseFor(a, b, result);
         Console.WriteLine("Результат (for): " + string.Join(" ", result));
     }
 
-    // Алгоритм попарного сложения с while
+    // Функция для попарного сложения элементов с помощью while
     static void SumPairwiseWhile(int[] a, int[] b, int[] result)
     {
-        int i = 0;
+        int i = 0; // Счётчик элементов
 
+        // Пока не пройдём все элементы массива
         while (i < a.Length)
         {
-            result[i] = a[i] + b[i];
-            i++;
+            result[i] = a[i] + b[i]; // Складываем элементы по одному
+            i++; // Переходим к следующему элементу
         }
     }
 
-    // Алгоритм попарного сложения с for
+    // Функция для попарного сложения элементов с помощью for
     static void SumPairwiseFor(int[] a, int[] b, int[] result)
     {
+        // Проходим по всем элементам массива
         for (int i = 0; i < a.Length; i++)
         {
-            result[i] = a[i] + b[i];
+            result[i] = a[i] + b[i]; // Складываем элементы по индексу
         }
     }
 }
