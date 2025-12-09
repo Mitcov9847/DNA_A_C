@@ -77,13 +77,11 @@ class User
 <Nullable>enable</Nullable>
 ```
 ###### 2. Сделайте так, чтобы предупреждения были ошибками
-Добавьте:
+Добавить:
 
-```
 <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 Пример корректного .csproj
-xml
-Копировать код
+```
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
